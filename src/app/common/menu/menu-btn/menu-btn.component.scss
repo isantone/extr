@@ -2,7 +2,6 @@
 
 // COMPONENT DEFINES //
 $component-color: $btn-color;
-$component-animation: .2s ease all;
 
 $component-line-height: 2px;
 $component-line-width: 25px;
@@ -23,11 +22,7 @@ $component-line-margin: $component-line-height * 2;
         margin-right: auto;
         margin-bottom: $component-line-margin;
 
-        //border-radius: 4px;
-
         background: $component-color;
-        transform: rotate(0deg);
-        transition: $component-animation;
     }
 
     &:focus {
@@ -37,18 +32,4 @@ $component-line-margin: $component-line-height * 2;
     &__bot {
         margin-bottom: 0;
     }
-
-    // &__top_opened {
-    //     transform: rotate(45deg);
-    //     transform-origin: 15% 15%;
-    // }
-
-    // &__mid_opened {
-    //     opacity: 0;
-    // }
-
-    // &__bot_opened {
-    //     transform: rotate(-45deg);
-    //     transform-origin: 15% 95%;
-    // }
-  }
+}

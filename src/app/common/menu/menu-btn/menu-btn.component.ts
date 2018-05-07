@@ -11,50 +11,52 @@ import {
   transition
 } from '@angular/animations';
 
+const ANIMATION_DURATION = '200ms';
+
 @Component({
   selector: 'es-menu-btn',
   templateUrl: './menu-btn.component.html',
   styleUrls: ['./menu-btn.component.scss'],
 
   animations: [
-    trigger('top-opened', [
-      state('0', style({
+    trigger('top-line-state', [
+      state('menu-closed', style({
         transform: 'rotate(0deg)',
       })),
-      state('1', style({
+      state('menu-opened', style({
         transformOrigin: '15% 15%',
         transform: 'rotate(45deg)',
       })),
 
-      transition('0 => 1', animate('200ms ease')),
-      transition('1 => 0', animate('200ms ease'))
+      transition('menu-closed => menu-opened', animate(ANIMATION_DURATION + ' ease')),
+      transition('menu-opened => menu-closed', animate(ANIMATION_DURATION + ' ease'))
     ]),
 
-    trigger('mid-opened', [
-      state('0', style({
+    trigger('mid-line-state', [
+      state('menu-closed', style({
         opacity: 1,
         transform: 'translateX(0)'
       })),
-      state('1', style({
+      state('menu-opened', style({
         opacity: 0,
         transform: 'translateX(-300%)',
       })),
 
-      transition('0 => 1', animate('200ms ease-in')),
-      transition('1 => 0', animate('200ms ease-out'))
+      transition('menu-closed => menu-opened', animate(ANIMATION_DURATION + ' ease-in')),
+      transition('menu-opened => menu-closed', animate(ANIMATION_DURATION + ' ease-out'))
     ]),
 
-    trigger('bot-opened', [
-      state('0', style({
+    trigger('bot-line-state', [
+      state('menu-closed', style({
         transform: 'rotate(0deg)',
       })),
-      state('1', style({
+      state('menu-opened', style({
         transformOrigin: '15% 95%',
         transform: 'rotate(-45deg)',
       })),
 
-      transition('0 => 1', animate('200ms ease')),
-      transition('1 => 0', animate('200ms ease'))
+      transition('menu-closed => menu-opened', animate(ANIMATION_DURATION + ' ease')),
+      transition('menu-opened => menu-closed', animate(ANIMATION_DURATION + ' ease'))
     ])
   ]
 })
@@ -63,7 +65,7 @@ export class MenuBtnComponent implements OnInit {
   // mobileOverlay = document.getElementById('mobileOverlay');
   // submenuContainer = document.getElementById('submenuContainer');
   searchResultsVisibility = false;
-  opened = false;
+  menuState = 'menu-closed';
 
 
   constructor() { }
@@ -71,7 +73,8 @@ export class MenuBtnComponent implements OnInit {
   ngOnInit() {
   }
 
-  showMenu(): void {
+  toggleMenuState(): void {
+    this.menuState = this.menuState === 'menu-closed' ? 'menu-opened' : 'menu-closed';
   }
 }
 
