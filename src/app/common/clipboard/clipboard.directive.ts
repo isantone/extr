@@ -4,21 +4,13 @@ import { Directive, Input, HostListener } from '@angular/core';
   selector: '[esClipboard]'
 })
 export class ClipboardDirective {
-  @Input('esClipboard') clipboardText: string;
+  @Input('esClipboard') textToCopy: string;
 
-  constructor() {
-    console.log('Clipboard created');
-  }
+  constructor() {}
 
-  private clip(): void {
-    console.log(this.clipboardText);
-  }
-
-  @HostListener('click') onMouseClick() {
-    this.clip();
-
+  private copyToClipboard(): void {
     const event = (e: ClipboardEvent) => {
-      e.clipboardData.setData('text/plain', this.clipboardText);
+      e.clipboardData.setData('text/plain', this.textToCopy);
       e.preventDefault();
       document.removeEventListener('copy', event);
     };
@@ -26,4 +18,9 @@ export class ClipboardDirective {
     document.addEventListener('copy', event);
     document.execCommand('copy');
   }
+
+  @HostListener('click') onMouseClick(): void {
+    this.copyToClipboard();
+  }
 }
+

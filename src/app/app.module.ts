@@ -7,8 +7,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './common/header/header.component';
 import { MenuBtnComponent } from './common/menu/menu-btn/menu-btn.component';
 import { MenuComponent } from './common/menu/menu.component';
-// import { ClipboardDirective } from './clipboard.directive';
-import { ClipDirective } from './common/clip-dir/clipboard.directive';
+import { ClipboardDirective } from './common/clipboard/clipboard.directive';
 
 
 @NgModule({
@@ -17,8 +16,7 @@ import { ClipDirective } from './common/clip-dir/clipboard.directive';
     HeaderComponent,
     MenuBtnComponent,
     MenuComponent,
-    // ClipboardDirective,
-    ClipDirective
+    ClipboardDirective,
   ],
   imports: [
     BrowserModule,
