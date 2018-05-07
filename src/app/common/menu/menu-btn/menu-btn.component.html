@@ -1,0 +1,20 @@
+<button
+    class="btn menu-btn header__menu-btn"
+    [class.menu-btn_opened]="opened"
+    (click)="opened = !opened">
+    <span
+        class="menu-btn__top"
+        [class.menu-btn__top_opened]="opened"
+        [@top-opened]="opened">
+    </span>
+    <span
+        class="menu-btn__mid"
+        [class.menu-btn__mid_opened]="opened"
+        [@mid-opened]="opened">
+    </span>
+    <span
+        class="menu-btn__bot"
+        [class.menu-btn__bot_opened]="opened"
+        [@bot-opened]="opened">
+    </span>
+</button>
